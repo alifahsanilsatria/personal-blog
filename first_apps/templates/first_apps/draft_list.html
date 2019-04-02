@@ -1,0 +1,12 @@
+{% extends "first_apps/base.html" %}
+
+{% block body_block %}
+	{% for draft in draft_list %}
+		<h2>
+			<a href="{{ draft.get_absolute_url }}">
+				{{ draft.title }}
+			</a>
+		</h2>
+		<p>Author : {{ draft.author }}</p>
+	{% endfor %}
+{% endblock %}

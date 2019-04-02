@@ -1,0 +1,42 @@
+{% extends "first_apps/base.html" %}
+{% load staticfiles %}
+{% block css_block %}
+		<link rel="stylesheet" type="text/css" href="{% static 'css/draft_detail.css' %}">
+{% endblock %}
+
+{% block body_block %}
+	<div id="title">
+		<h1>{{ draft.title }}</h1>	
+	</div>
+
+	{% if not delete_click %}
+		<form method="POST" action="{% url 'publish' %}">
+			{% csrf_token %}
+			{{ publish_form.as_p }}
+			<input type="submit" value="Publish">
+		</form>
+	{% endif %}
+
+	<div id="content">
+		{% autoescape off %}
+			{{draft.text}}
+		{% endautoescape %}
+	</div>
+
+	<div id="edit_delete">
+		<a href="{{ draft.get_absolute_url_edit }}" class="change">
+			<img src="{% static 'images/edit.jpg' %}" width="30" height="30">
+		</a>
+		<a href="{{ draft.get_absolute_url_delete }}" class="change">
+			<img src="{% static 'images/delete.png' %}" width="30" height="30">
+		</a>
+	</div>
+	<hr>
+	{% if delete_click %}
+		<form method="POST">
+			{% csrf_token %}
+			<p>Are you sure want to delete this ?</p>
+			<input type="submit" value="Confirm">
+		</form>	
+	{% endif %}
+{% endblock %}

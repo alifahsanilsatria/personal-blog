@@ -1,0 +1,13 @@
+{% extends "first_apps/base.html" %}
+{% load staticfiles %}
+{% block css_block %}
+    <link rel="stylesheet" href="{% static 'css/about.css' %}">
+{% endblock%}
+
+{% block body_block %}
+    <div id="photo_place">
+        <img id="foto_diri" src="{% static 'images/foto_diri.jpeg' %}" width="300" height="300">
+    </div>
+
+    <div id="riwayat"></div>
+{% endblock %}

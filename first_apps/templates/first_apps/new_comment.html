@@ -1,0 +1,11 @@
+{% extends "first_apps/base.html" %}
+{% load staticfiles %}
+
+{% block body_block %}
+<h2>New Comment</h2>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <input type="submit" value="Post Comment">
+    </form>
+{% endblock %}

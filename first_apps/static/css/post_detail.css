@@ -1,0 +1,38 @@
+ #title {
+	margin-top: 50px;
+	text-align: center;
+}
+
+#content {
+	margin-top: 25px;
+}
+
+#edit_delete {
+	margin-top: 5px;
+}
+
+#title, #content, #edit_delete {
+	width: 75%;
+}
+
+.change {
+	margin-right: 7.5px;
+}
+
+hr {
+	width: 75%;
+	margin-left: 0px;
+}
+
+small {
+	width: 30px;
+	height: 30px;
+}
+
+#comment-btn {
+	margin-left: 570px;
+}
+
+#comments {
+	width: 75%;
+}

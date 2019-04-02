@@ -1,0 +1,37 @@
+{% extends "first_apps/base.html" %}
+{% load staticfiles %}
+
+{% block head_block %}
+	{{ form.media }}
+{% endblock %}
+{% block body_block %}
+	<h2>New Post</h2>
+	<form method="POST">
+		{% csrf_token %}
+		<div class="new-post">
+			{{form.author.errors}}
+			<label for="{{form.author.id_for_label}}">
+				Author: 
+			</label>
+			{{form.author}}
+		</div>
+
+		<div class="new-post">
+			{{form.title.errors}}
+			<label for="{{form.title.id_for_label}}">
+				Title: 
+			</label>
+			{{form.title}}
+		</div>
+
+		<div class="new-post">
+			{{form.text.errors}}
+			<label for="{{form.text.id_for_label}}">
+				Author: 
+			</label>
+			{{form.text}}
+		</div>
+
+    	<button type="submit" class="btn btn-success">Save</button>
+	</form>
+{% endblock %}

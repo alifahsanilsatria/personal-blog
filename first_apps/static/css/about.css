@@ -1,0 +1,16 @@
+#photo_place {
+    width: 75%;
+    margin-top: 20px;
+}
+
+#riwayat {
+    border: 1px solid black;
+    width: 75%;
+    height: 400px;
+    margin-top: 20px;
+}
+
+#foto_diri {
+    margin: auto;
+    display: block;
+}

@@ -1,0 +1,61 @@
+{% extends "first_apps/base.html" %}
+{% load staticfiles %}
+{% block css_block %}
+		<link rel="stylesheet" type="text/css" href="{% static 'css/post_detail.css' %}">
+{% endblock %}
+
+
+{% block body_block %}
+	<div id="title">
+		<h1>{{ post.title }}</h1>
+		<small>{{ post.publish_time }}</small>	
+	</div>
+
+	<div id="content">
+		{% autoescape off %}
+			{{post.text}}
+		{% endautoescape %}
+	</div>
+
+	{% if username %}
+		<div id="edit_delete">
+			<a href="{{ post.get_absolute_url_edit }}" class="change">
+				<img src="{% static 'images/edit.jpg' %}" width="30" height="30">
+			</a>
+			<a href="{{ post.get_absolute_url_delete }}" class="change">
+				<img src="{% static 'images/delete.png' %}" width="30" height="30">
+			</a>
+		</div>
+	{% endif %}
+
+	<hr>
+	
+	<div id="comments">
+		{% if not comment_list %}
+			<small>No comments posted.</small>
+		{% endif %}
+
+		<a href="{{ post.get_absolute_url_comment }}">
+			<button id="comment-btn" type="submit" class="btn btn-primary">Add comment</button>
+		</a>
+
+		{% if comment_list %}
+			{% for comment in comment_list %}
+				<br>
+				<small>{{comment.publish_time}}</small>
+				<br>
+				<span>{{comment.text|linebreaks}}</span>
+				<small>Posted by : {{comment.author}}</small>
+				<hr>
+			{% endfor %}
+		{% endif %}
+	</div>
+
+	{% if delete_click %}
+		<form method="POST">
+			{% csrf_token %}
+			<p>Are you sure want to delete this ?</p>
+			<input type="submit" value="Confirm">
+		</form>	
+	{% endif %}
+{% endblock %}
